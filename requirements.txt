@@ -3,5 +3,3 @@ pillow
 transformers 
 timm 
 einops
-flash_attn 
-# pip install matplotlib
