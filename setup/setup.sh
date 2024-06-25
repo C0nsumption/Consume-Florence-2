@@ -27,6 +27,6 @@ pip install -r requirements.txt
 pip install flash_attn
 
 echo "Running tests..."
-python src/main.py
+python test/test_cli.py
 
 echo "Setup complete!"

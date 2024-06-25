@@ -96,14 +96,80 @@ pip install flash_attn
 
 7. **Run Tests:**
  ```sh
-python src/main.py
+python test/test_cli.py
  ```
 </details>
 
 
 ## Usage
 
-Currently, `python main.py` will run your test. Reference the file for usage. Proper CLI coming in next push. Feature Branch 
+### Using the CLI
+
+The project includes a Command Line Interface (CLI) for easy interaction. To use the CLI:
+
+1. Navigate to the project root directory.
+2. Run the following command:
+
+```bash
+python src/cli.py --model-id <path_to_model> --image-path <path_to_image> --task <task_name> [--text-input <additional_text>] [--output-dir <output_directory>]
+```
+
+Arguments:
+- `--model-id`: Path to the model (required)
+- `--image-path`: Path to the image file or URL (required)
+- `--task`: Analysis task to perform (required, see valid tasks below)
+- `--text-input`: Additional text input for the task, if required
+- `--output-dir`: Directory to save output files (default: 'outputs')
+
+Valid tasks:
+- `<CAPTION>`
+- `<DETAILED_CAPTION>`
+- `<MORE_DETAILED_CAPTION>`
+- `<OD>`
+- `<DENSE_REGION_CAPTION>`
+- `<REGION_PROPOSAL>`
+- `<CAPTION_TO_PHRASE_GROUNDING>`
+- `<REFERRING_EXPRESSION_SEGMENTATION>`
+- `<REGION_TO_SEGMENTATION>`
+- `<OPEN_VOCABULARY_DETECTION>`
+- `<REGION_TO_CATEGORY>`
+- `<REGION_TO_DESCRIPTION>`
+- `<OCR>`
+- `<OCR_WITH_REGION>`
+
+Example:
+```bash
+python src/cli.py --model-id ./Florence-2-large --image-path ./dataset/000.png --task "<CAPTION>"
+```
+
+### Running Tests
+
+To run the tests:
+
+1. Navigate to the project root directory.
+2. Run the CLI tests:
+   ```bash
+   python test/test_cli.py
+   ```
+3. Run the tests on the ImageAnalyzer class:
+   ```bash
+   python test/test.py
+   ```
+
+The `test.py` script runs through various tasks using the `ImageAnalyzer` class directly, including:
+- Basic captioning tasks
+- Object detection
+- Dense region captioning
+- Region proposal
+- Phrase grounding
+- Referring expression segmentation
+- Region to segmentation
+- Open vocabulary detection
+- Region to category and description
+- OCR tasks
+
+These test scripts will run through various tasks and save outputs in the specified output directory.
+
 
 ## Contributing
 
